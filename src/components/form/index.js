@@ -22,7 +22,7 @@ export default class PostForm extends React.Component {
             "author":this.state.author
         }
 
-        axios.post('hayoo apa link apinya', article)
+        axios.post('https://go-cms-api.herokuapp.com/article/post', article)
         .then(res=>{
             console.log(res);
             console.log(res.data);
