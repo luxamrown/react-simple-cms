@@ -1,20 +1,36 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default class PostForm extends React.Component {
     state = {
         title:'',
         desc:'',
-        author:''
+        author:'',
+        notValid:true
     }
+    
+
 
     handleChange = e =>{
         this.setState({[e.target.name]:e.target.value})
+        if (this.state.title !== "" && this.state.desc !== "" && this.state.author === "El-Abror") {
+            this.setState({
+                notValid:false
+            })
+        }
+
+        if(this.state.author !== "El-Abror"){
+            this.setState({
+                notValid:true
+            })
+        }
     }
 
     handleSubmit = e =>{
         e.preventDefault()
+
 
         const article = {
             "title":this.state.title,
@@ -24,14 +40,26 @@ export default class PostForm extends React.Component {
 
         axios.post(process.env.REACT_APP_URL_API, article)
         .then(res=>{
-            console.log(res);
-            console.log(res.data);
+            Swal.fire(
+                'Success!',
+                'Aricle is Succes to post',
+                'success'
+              )
+        })
+        .catch(err=>{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: err
+              })
         })
     }
 
+
     render(){
         return (
-          <div className='m-5'>
+          <div className=''>
               <Form className='p-5 m-5'>
                   <Form.Group className="mb-3">
                       <Form.Label>Title</Form.Label>
@@ -41,11 +69,11 @@ export default class PostForm extends React.Component {
                       <Form.Label>Content</Form.Label>
                       <Form.Control as="textarea" onChange={this.handleChange} name='desc' rows={10} />
                   </Form.Group>
-                  <Form.Select aria-label="Default select example" name='author'  onChange={this.handleChange}>
-                      <option>Select Author</option>
+                  <Form.Select aria-label="Default select example" name='author' onClick={this.handleChange}>
+                      <option value="1">Select Author</option>
                       <option value="El-Abror">El-Abror</option>
                   </Form.Select>
-                  <Button variant="primary" onClick={this.handleSubmit} className='m-5'>
+                  <Button disabled={this.state.notValid} variant="primary" onClick={this.handleSubmit} className='m-5'>
                       Submit Article
                   </Button>
               </Form>
