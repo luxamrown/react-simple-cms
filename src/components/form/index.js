@@ -22,7 +22,7 @@ export default class PostForm extends React.Component {
             "author":this.state.author
         }
 
-        axios.post('hayoo apa linknyaa', article)
+        axios.post(process.env.REACT_APP_URL_API, article)
         .then(res=>{
             console.log(res);
             console.log(res.data);
