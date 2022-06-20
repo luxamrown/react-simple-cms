@@ -11,8 +11,6 @@ export default class PostForm extends React.Component {
         notValid:true
     }
     
-
-
     handleChange = e =>{
         this.setState({[e.target.name]:e.target.value})
         if (this.state.title !== "" && this.state.desc !== "" && this.state.author === "El-Abror") {
@@ -59,15 +57,16 @@ export default class PostForm extends React.Component {
 
     render(){
         return (
-          <div className=''>
-              <Form className='p-5 m-5'>
+          <div>
+              <Form className='p-5 m-3'>
+                <Form.Label as={"h2"} className={"text-center"}>Post an Article</Form.Label>
                   <Form.Group className="mb-3">
                       <Form.Label>Title</Form.Label>
                       <Form.Control name='title' onChange={this.handleChange} placeholder="Title: " />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                       <Form.Label>Content</Form.Label>
-                      <Form.Control as="textarea" onChange={this.handleChange} name='desc' rows={10} />
+                      <Form.Control as="textarea" onChange={this.handleChange} name='desc' rows={15} />
                   </Form.Group>
                   <Form.Select aria-label="Default select example" name='author' onClick={this.handleChange}>
                       <option value="1">Select Author</option>

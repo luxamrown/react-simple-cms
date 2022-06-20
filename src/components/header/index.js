@@ -6,11 +6,9 @@ export default function Header() {
     <>
         <Container fluid>
           <Row>
-            <Col>
               <div className="py-5 bg-dark">
-                <h1 className='text-white'>CMS mohamadelabror.me/blog</h1>
+                <h1 className='text-white text-center'>CMS mohamadelabror.me/blog</h1>
               </div>
-            </Col>
           </Row>
         </Container>
     </>
