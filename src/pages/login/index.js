@@ -42,7 +42,7 @@ export default function Login() {
                     <Col xs={6} md={4} className="m-auto">
                         <Form className="bg-dark text-light p-4 rounded">
                             <Form.Group className="mb-3">
-                                <Form.Label>Usernames</Form.Label>
+                                <Form.Label>Username</Form.Label>
                                 <Form.Control name="username" type="text" placeholder="Enter username" onChange={handleChangeUserName} />
                             </Form.Group>
                             <Form.Group className="mb-3">

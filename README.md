@@ -1,8 +1,8 @@
 ### feature
 - create article
+- delete article
 
 ### wip
-- delete article
 - edit article
 
 <!-- # Getting Started with Create React App
